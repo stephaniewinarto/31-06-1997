@@ -266,8 +266,11 @@ function videos() {
   if (mouseY > 220 && mouseY < 700) {
     image(movieArray[19], 400, 150, 300, 205); 
     movieArray[19].loop(); 
+    image(movieArray[23], 550, windowHeight-400, 330, 235); 
+    movieArray[23].loop(); 
   } else { 
     movieArray[19].pause(); 
+    movieArray[23].pause();
   }
   
   if (mouseY > 250 && mouseY < 520) {
@@ -286,24 +289,37 @@ function videos() {
 
   if(mouseY > pole) {
     image(movieArray[6], 250, 150, 230, 135); 
+    image(movieArray[24], w-700, 690, 350, 305); 
     movieArray[6].loop(); 
+    movieArray[24].loop(); 
     date = "1st July, 1997";
     
   } else { 
     date = "30th June, 1997";
     movieArray[6].pause();
+    movieArray[24].pause(); 
+
     
   }
   
   if(mouseY > 620) {
-    image(movieArray[9], w-500, 400, 430, 335); 
+    image(movieArray[9], w-800, 400, 430, 335); 
+
     movieArray[9].loop(); 
 
   } else { 
-    movieArray[9].pause(); 
+    movieArray[9].pause();
+  }
+
+  if(mouseY > 630) {
+    image(movieArray[21], w-500, 700, 300, 205); 
+    movieArray[21].loop(); 
+
+  } else { 
+    movieArray[21].pause();  
   }
   
-  if(mouseY > pole-40) {
+  if(mouseY > pole-40 && mouseY < pole) {
     image(movieArray[8], w-490, 100, 250, 155); 
     image(movieArray[10], w-550, 300, 250, 155); 
     movieArray[8].loop(); 
@@ -313,22 +329,26 @@ function videos() {
     movieArray[10].pause();
   }
 
-  if(mouseY > pole-30) {
+  if(mouseY > pole-30 && mouseY < pole) {
     image(movieArray[11], 100, 330, 400, 255); 
     movieArray[11].loop();
   } else { 
     movieArray[11].pause();
   }
 
-  if(mouseY > pole-20) {
+  if(mouseY > pole-20 && mouseY < pole ) {
     image(movieArray[12], 400, 550, 200, 155); 
+    image(movieArray[22], w-1600, 125, 400, 305); 
     movieArray[12].loop();
+    movieArray[22].loop();
   } else { 
     movieArray[12].pause();
+    movieArray[22].pause();
   }
 
-  if(mouseY > pole-10) {
+  if(mouseY > pole-10 && mouseY < pole) {
     image(movieArray[13], 500, 650, 200, 155); 
+   
     movieArray[13].loop();
   } else { 
     movieArray[13].pause();
@@ -357,7 +377,11 @@ var movieNames = [
   "18.mov", 
   "19.mov", 
   "20.mov", 
-  "21.mov"
+  "21.mov",
+  "22.mov", 
+  "23.mov", 
+  "24.mov",
+  "25.mov"
   ] 
   
 

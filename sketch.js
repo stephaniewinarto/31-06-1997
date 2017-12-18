@@ -2,17 +2,16 @@ var brit;
 var china; 
 var y;
 var y2; 
-
-var pole = 900;
-var poleW = 10; 
-var poleOffest = 50;
-var poleStart = 100; 
+var pole;
+var poleW; 
+var poleOffest;
+var poleStart; 
 var date = "30th July, 1997"
 var time; 
-
 var movieArray = []
-
 var movie; 
+var w; 
+var h; 
 
 function preload() { 
   brit = loadImage("assets/brit.png"); 
@@ -40,6 +39,14 @@ function preload() {
 }
 
 function setup() {
+  w = windowWidth; 
+  h = windowHeight;
+
+  pole = h/1.2;
+  poleW = 10; 
+  poleOffest = 50;
+  poleStart = 100;
+
   createCanvas(windowWidth, windowHeight);
 
 
@@ -99,23 +106,23 @@ function draw() {
 
 
 function things() { 
-  if (y > 100) {
+  if (y > h/10) {
     passport();
   } 
 
-  if (y>200) { 
+  if (y>h/5.4) { 
     stamps(); 
   } 
 
-  if (y>300) { 
+  if (y>h/3.6) { 
     money();
   } 
 
-  if (y>400) { 
-    image(socket, 100 , windowHeight-450, 150,150);
+  if (y>h/2.7) { 
+    image(socket, w/19, h/2, w/12.8, h/7.2);
   }
 
-  if (y>500) { 
+  if (y>h/2.16) { 
     anthem(); 
   }
 } 
@@ -123,10 +130,10 @@ function things() {
 function anthem() { 
 
   if (mouseY < pole) { 
-    image(anthem_brit, windowWidth/2-400, windowHeight-800, 250,350); 
+    image(anthem_brit, w/3.4, h/3.7, w/7.7, h/3); 
     //song_brit.play(); 
     } else { 
-    image(anthem_chi, windowWidth/2-400 , windowHeight-800,250,350);
+    image(anthem_chi, w/3.4, h/3.7, w/7.7, h/3);
     //song_china.play();  
     }
 
@@ -136,9 +143,9 @@ function anthem() {
 function money() { 
 
   if (mouseY < pole) { 
-    image(money_brit, windowWidth-300 , windowHeight-850, 300,300); 
+    image(money_brit, w/1.2 , h/6.8, w/6.4, h/3.6); 
     } else { 
-    image(money_hk, windowWidth-300 , windowHeight-850,300,300); 
+    image(money_hk, w/1.2 , h/6.8, w/6.4, h/3.6); 
   }
 
 }
@@ -146,22 +153,20 @@ function money() {
 
 function stamps() { 
    if (mouseY < pole) { 
-    image(stamp_brit, windowWidth-500 , windowHeight-250, 300,300); 
+    image(stamp_brit, w/1.4 , h/1.2, w/6.4, h/3.6); 
     } else { 
-    image(stamp_hk, windowWidth-500 , windowHeight-250,300,300); 
+    image(stamp_hk, w/1.4 , h/1.2, w/6.4, h/3.6); 
   }
 
 }
 
 
 function passport() { 
-  img_x = 200; 
-  img_y = windowHeight-300; 
 
   if (mouseY < pole) { 
-    image(passport_brit, img_x , img_y, 200,300); 
+    image(passport_brit, w/9.6 , h/1.4, w/9.6, h/3.6); 
     } else { 
-    image(passport_hk, img_x , img_y, 200,300); 
+    image(passport_hk, w/9.6 , h/1.4, w/9.6, h/3.6); 
   }
 
 }
@@ -169,11 +174,14 @@ function passport() {
 
 function flag(){ 
 
-  imageW = 200; 
+  imageW = 180; 
   imageH = 100; 
-  pole = windowHeight-150;
+  pole = h-150;
+
+  y = constrain(mouseY, poleStart, pole); 
+  y2 = pole+imageH + y*-1; 
     
-  image(brit, windowWidth/2 - poleOffest-200, y, imageW, imageH); 
+  image(brit, windowWidth/2 - poleOffest-imageW-poleW, y, imageW, imageH); 
   //image(flag_brit_hk, windowWidth/2 - poleOffest-200, y + imageH + 20, imageW, imageH); 
   //image(flag_hk, windowWidth/2 + poleOffest, y2 + imageH + 20 , imageW, imageH); 
   image(china, windowWidth/2 + poleOffest, y2, imageW, imageH); 
@@ -182,8 +190,7 @@ function flag(){
   rect(windowWidth/2 + poleOffest-10, poleStart, poleW, pole); 
   
    
-      y = constrain(mouseY, poleStart,pole); 
-      y2 = pole+imageH + y*-1; 
+      
 
 
     
@@ -193,56 +200,56 @@ function videos() {
 
     w = windowWidth; 
 
-    if (mouseY > poleStart && mouseY<200) { 
-    image(movieArray[0], 100, 100, 250, 170); 
+    if (mouseY > poleStart && mouseY<(h/5.4)) { 
+    image(movieArray[0], w/19, h/11, w/7.7, h/6.3); 
     stroke(2);
     movieArray[0].loop(); 
     } else { 
     movieArray[0].pause();
   }
         
-  if(mouseY > 110 && mouseY < 450) { 
-    image(movieArray[1], 60, 290, 300, 200); 
+  if(mouseY > (h/9.8) && mouseY < (h/2.4)) { 
+    image(movieArray[1], w/32, h/3.7, w/6.4, h/5.4); 
     movieArray[1].loop();
     } else { 
     movieArray[1].pause();
   }
   
-  if(mouseY > 125 && mouseY < 450) {
-    image(movieArray[2], 250, 240, 230, 135); 
+  if(mouseY > (h/8.6) && mouseY < (h/2.4)) {
+    image(movieArray[2], w/7.7, h/4.5, w/8.4, h/8); 
     movieArray[2].loop(); 
   } else { 
     movieArray[2].pause();
   }
   
-  if (mouseY > 150 && mouseY<400) { 
-    image(movieArray[5], w-550, 100, 450, 270); 
+  if (mouseY > (h/7.2) && mouseY<(h/2.7)) { 
+    image(movieArray[5], w/1.4, h/10.8, w/4.3, h/4); 
     movieArray[5].loop(); 
     } else { 
     movieArray[5].pause();
   }
   
-  if(mouseY > 100 && mouseY < 200) {
-    image(movieArray[4], 350, 500, 330, 235); 
+  if(mouseY > (h/10.1) && mouseY < (h/5.4)) {
+    image(movieArray[4], w/5.5, h/2.16, w/5.8, h/4.6); 
     movieArray[4].loop(); 
   } else { 
     movieArray[4].pause();
   }
   
-  if(mouseY > 150 && mouseY < 200) {
-    image(movieArray[3], 220, 450, 230, 135); 
+  if(mouseY > (h/7.2) && mouseY < (h/5.4)) {
+    image(movieArray[3], w/8.7, h/2.4, w/8.3, h/8); 
     movieArray[3].loop(); 
   } else { 
     movieArray[3].pause();
   }
   
-  if(mouseY > 200 && mouseY < 500) {
+  if(mouseY > (h/5.4) && mouseY < (h/2.16)) {
 
 
-    image(movieArray[20], w-950, windowHeight-900, 230, 135); 
-    image(movieArray[14], w-800, windowHeight-1010, 230, 135); 
-    image(movieArray[7], w-700, 500, 330, 235); 
-    image(movieArray[15], 500, 600, 230, 135); 
+    image(movieArray[20], w/2, h/6, w/8.4, h/8); 
+    image(movieArray[14], w/1.7, h/15.4, w/8.4, h/8); 
+    image(movieArray[7], w/1.6, h/2.16, w/5.8, h/4.6); 
+    image(movieArray[15], w/3.8, h/1.8, w/8.4, h/8); 
     
     movieArray[20].loop(); 
     movieArray[7].loop(); 
@@ -256,40 +263,40 @@ function videos() {
 
   }
 
-   if (mouseY > 220 && mouseY < 520) {
-    image(movieArray[16], 200, 650, 330, 235); 
+   if (mouseY > (h/4.9) && mouseY < (h/2)) {
+    image(movieArray[16], w/9.7, h/2, w/6.8, h/5.6); 
     movieArray[16].loop(); 
   } else { 
     movieArray[16].pause();
   }
 
-  if (mouseY > 220 && mouseY < 700) {
-    image(movieArray[19], 400, 150, 300, 205); 
+  if (mouseY > (h/4.9) && mouseY < (h/1.5)) {
+    image(movieArray[19], w/4.8, h/7.2, w/6.4, h/5.2); 
     movieArray[19].loop(); 
-    image(movieArray[23], 550, windowHeight-400, 330, 235); 
+    image(movieArray[23], w/3.5, h/1.6, w/5.8, h/4.6); 
     movieArray[23].loop(); 
   } else { 
     movieArray[19].pause(); 
     movieArray[23].pause();
   }
   
-  if (mouseY > 250 && mouseY < 520) {
-    image(movieArray[17], w-700, 850, 330, 235); 
+  if (mouseY > (h/4.3) && mouseY < (h/2)) {
+    image(movieArray[17], w/1.6, h/1.3, w/5.8, h/4.6); 
     movieArray[17].loop(); 
   } else { 
     movieArray[17].pause();
   }
 
-  if (mouseY > 275 && mouseY < 700) {
-    image(movieArray[18], 550, windowHeight-400, 330, 235); 
+  if (mouseY > (h/3.9) && mouseY < (h/1.5)) {
+    image(movieArray[18], w/3.55, h/1.6, w/5.8, h/4.6); 
     movieArray[18].loop(); 
   } else { 
     movieArray[18].pause();
   }
 
   if(mouseY > pole) {
-    image(movieArray[6], 250, 150, 230, 135); 
-    image(movieArray[24], w-700, 690, 350, 305); 
+    image(movieArray[6], w/7.7, h/7.2, w/8.4, h/8); 
+    image(movieArray[24], w/1.6, h/1.6, w/5.5, h/3.5); 
     movieArray[6].loop(); 
     movieArray[24].loop(); 
     date = "1st July, 1997";
@@ -302,8 +309,8 @@ function videos() {
     
   }
   
-  if(mouseY > 620) {
-    image(movieArray[9], w-800, 400, 430, 335); 
+  if(mouseY > (h/1.74)) {
+    image(movieArray[9], w/1.7, h/2.7, w/4.5, h/3.2); 
 
     movieArray[9].loop(); 
 
@@ -311,8 +318,8 @@ function videos() {
     movieArray[9].pause();
   }
 
-  if(mouseY > 630) {
-    image(movieArray[21], w-500, 700, 300, 205); 
+  if(mouseY > h/1.7) {
+    image(movieArray[21], w/1.35, h/1.55, w/6.4, h/5.3); 
     movieArray[21].loop(); 
 
   } else { 
@@ -320,8 +327,8 @@ function videos() {
   }
   
   if(mouseY > pole-40 && mouseY < pole) {
-    image(movieArray[8], w-490, 100, 250, 155); 
-    image(movieArray[10], w-550, 300, 250, 155); 
+    image(movieArray[8], w/1.34, h/10.8, w/7.7, h/7); 
+    image(movieArray[10], w/1.4, h/3.6, w/7.7, h/7); 
     movieArray[8].loop(); 
     movieArray[10].loop();
   } else { 
@@ -330,15 +337,15 @@ function videos() {
   }
 
   if(mouseY > pole-30 && mouseY < pole) {
-    image(movieArray[11], 100, 330, 400, 255); 
+    image(movieArray[11], w/19.2, h/3.3, w/4.8, h/4.3); 
     movieArray[11].loop();
   } else { 
     movieArray[11].pause();
   }
 
   if(mouseY > pole-20 && mouseY < pole ) {
-    image(movieArray[12], 400, 550, 200, 155); 
-    image(movieArray[22], w-1600, 125, 400, 305); 
+    image(movieArray[12], w/4.8, h/2, w/9.6, h/7); 
+    image(movieArray[22], w/7.4, h/8.6, w/4.8, h/3.54); 
     movieArray[12].loop();
     movieArray[22].loop();
   } else { 
@@ -347,7 +354,7 @@ function videos() {
   }
 
   if(mouseY > pole-10 && mouseY < pole) {
-    image(movieArray[13], 500, 650, 200, 155); 
+    image(movieArray[13], w/3.8, h/1.6, w/9.6, h/7); 
    
     movieArray[13].loop();
   } else { 

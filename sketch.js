@@ -106,7 +106,7 @@ function draw() {
 
 
 function things() { 
-  if (y > h/10) {
+  if (y > h/7) {
     passport();
   } 
 
